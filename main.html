@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      background-image: url(https://media.istockphoto.com/id/1217507110/photo/hot-summer-or-heat-wave-background.jpg?s=1024x1024&w=is&k=20&c=dy-1ABkuMH7O1orRm87AkG580uhkM0VDn6-lAqCLcbY=);
+    }
+    
+    .container {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 300px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    label {
+      font-weight: bold;
+    }
+    
+    input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      margin: 5px 0;
+    }
+    
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    #result {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Temperature Converter</h1>
+  <div class="container">
+    <label for="celsius">Celsius:</label>
+    <input type="number" id="celsius" placeholder="Enter temperature in Celsius" required>
+    <label for="fahrenheit">Fahrenheit:</label>
+    <input type="number" id="fahrenheit" placeholder="Enter temperature in Fahrenheit" required>
+    <button id="convert">Convert</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById('convert').addEventListener('click', function () {
+      const celsius = parseFloat(document.getElementById('celsius').value);
+      const fahrenheit = parseFloat(document.getElementById('fahrenheit').value);
+
+      if (!isNaN(celsius)) {
+        const result = (celsius * 9/5) + 32;
+        document.getElementById('fahrenheit').value = result;
+        document.getElementById('result').textContent = `${celsius}°C is ${result}°F`;
+      } else if (!isNaN(fahrenheit)) {
+        const result = (fahrenheit - 32) * 5/9;
+        document.getElementById('celsius').value = result;
+        document.getElementById('result').textContent = `${fahrenheit}°F is ${result}°C`;
+      } else {
+        document.getElementById('result').textContent = 'Please enter a valid temperature.';
+      }
+    });
+  </script>
+</body>
+</html>
